@@ -1,11 +1,6 @@
 Attribute VB_Name = "AirtelRebateList"
 Sub AirtelRebateListScript(ByRef trx As String, ByRef SAPConnection As Variant, ByRef CMail As Variant)
-<<<<<<< HEAD
-    
-    ' hello everyone!
-=======
-    'test github
->>>>>>> 12d4009c8284230772846da90be5660a1904b249
+
     On Error GoTo ErrHandler
     Dim sBar
     Set sBar = SAPConnection.session.findById("wnd[0]/sbar")
