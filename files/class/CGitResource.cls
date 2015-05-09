@@ -30,7 +30,7 @@ End Enum
 ' Custom constructor for the class.
 ' Param String path, the path where the files should be exported to or imported from
 ' Return void.
-Public Sub Init(Optional ByVal wbName As String)
+Public Sub Init(Optional ByVal wbName)
     ' Load workbook.
     If IsMissing(wbName) Then
         Set xlWb = ThisWorkbook
@@ -91,7 +91,7 @@ Public Sub ImportCode()
     ' Loop through the files in each path.
     For Each d In subDir
         For Each f In d.Files
-            If f.Name <> "CGitResource.cls" And GetExtension(f.Name) <> ".frx" And f.Name <> "GitResourceHelper.bas" Then
+            If (f.Name <> "CGitResource.cls" And GetExtension(f.Name) <> ".frx") Or (f.Name <> "frmSettings.frm") Then
                 ' CGitResource and GitResourceHelper should be imported from the VBE only. Those can't be imported as they run this, or helps to do so.
                 ' Must remove the project's VBComps before importing, which really must be tested before using on SmartApp. Always keep a backup file too.
                 Set VBComp = xlWb.VBProject.VBComponents(RemoveExtension(f.Name))

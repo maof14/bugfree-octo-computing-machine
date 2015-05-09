@@ -223,15 +223,5 @@ Private Sub UserForm_Activate()
             If Not GetDATEFORMAT = "" Then
         Me.Dateformattxt = GetDATEFORMAT
     End If
-
     
 End Sub
-
-Private Sub UserForm_Initialize()
-    Debug.Print "Class frmExport initialized"
-End Sub
-
-Private Sub UserForm_Terminate()
-    Debug.Print "Class frmExport terminated"
-End Sub
-
