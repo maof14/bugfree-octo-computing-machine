@@ -129,7 +129,7 @@ Private Sub btnClearFileContacts_Click()
     Me.txtFilePathContacts.value = ""
 End Sub
 
-
+' Settings form - Export button.
 Private Sub btnExport_Click()
     Dim gr As CGitResource
     Set exportPrompt = New frmExport
@@ -142,6 +142,7 @@ Private Sub btnExport_Click()
     Set frmExport = Nothing
 End Sub
 
+' Settings form - Import button.
 Private Sub btnImport_Click()
     Dim gr As CGitResource
     Set gr = New CGitResource
