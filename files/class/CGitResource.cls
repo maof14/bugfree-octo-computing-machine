@@ -91,7 +91,7 @@ Public Sub ImportCode()
     ' Loop through the files in each path.
     For Each d In subDir
         For Each f In d.Files
-            If (f.Name <> "CGitResource.cls") Or (GetExtension(f.Name) <> ".frx") Or (f.Name <> "frmSettings.frm") Then
+        If ((f.Name <> "CGitResource.cls") And (StrComp(GetExtension(f.Name), ".frx", vbTextCompare) <> 0) And (f.Name <> "frmSettings.frm")) Then
                 ' CGitResource and GitResourceHelper should be imported from the VBE only. Those can't be imported as they run this, or helps to do so.
                 ' Must remove the project's VBComps before importing, which really must be tested before using on SmartApp. Always keep a backup file too.
                 Set VBComp = xlWb.VBProject.VBComponents(RemoveExtension(f.Name))

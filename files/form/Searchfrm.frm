@@ -13,6 +13,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
 Private Sub Image1_Click()
 Searchfrm.Hide
 If Me.intrasites.value = "Supporting documents for NS" Then

@@ -14,6 +14,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
+
 Private Sub CommandButton1_Click()
     CNS41AFGUserForm3.Hide
     CNS41AFGUserForm3.Label5 = "0"

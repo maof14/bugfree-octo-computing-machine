@@ -258,6 +258,7 @@ Sub OneToOneRelation(control As IRibbonControl)
     Dim db As CDatabase
     Dim res As Collection
     Dim warning As frmWarning
+    Dim pCodeMatch As Variant
     
     ' Warning not to overwrite
     If (getHideConvertWarning = "0" Or getHideConvertWarning = "") Then
@@ -280,13 +281,19 @@ Sub OneToOneRelation(control As IRibbonControl)
     want = str(2)
     
     ' PCode special case scenario to be able to toggle between them.
-    If (have = "AnyPCode" Or want = "AnyPCode") Then
+    If (have = "AnyPCode" And want = "AnyPCode") Then
         If (Len(ActiveCell.value) = 3) Then
             have = "pCodeOne"
             want = "pCode"
         Else
             have = "pCode"
             want = "pCodeOne"
+        End If
+    ElseIf (have = "AnyPCode") Then
+        If (Len(ActiveCell.value) = 3) Then
+            have = "pCodeOne"
+        Else
+            have = "pCode"
         End If
     End If
     
