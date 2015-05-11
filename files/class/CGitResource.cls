@@ -87,16 +87,19 @@ Public Sub ImportCode()
         MsgBox "You do not seem to have any " & Chr(34) & "files" & Chr(34) & " directory in this folder, exiting.", vbCritical, "Error!"
         Exit Sub
     End If
-    
+    ' Try removing all vbcomps in separate step.
     ' Loop through the files in each path.
     For Each d In subDir
         For Each f In d.Files
-        If ((f.Name <> "CGitResource.cls") And (StrComp(GetExtension(f.Name), ".frx", vbTextCompare) <> 0) And (f.Name <> "frmSettings.frm")) Then
+            If (f.Name <> "CGitResource.cls") Then
                 ' CGitResource and GitResourceHelper should be imported from the VBE only. Those can't be imported as they run this, or helps to do so.
                 ' Must remove the project's VBComps before importing, which really must be tested before using on SmartApp. Always keep a backup file too.
                 Set VBComp = xlWb.VBProject.VBComponents(RemoveExtension(f.Name))
-                xlWb.VBProject.VBComponents.Remove VBComp
-                xlWb.VBProject.VBComponents.Import f
+                ' Try skipping importing the forms. :(
+                If VBComp.Type <> vbext_ct_MSForm Then
+                    xlWb.VBProject.VBComponents.Remove VBComp
+                    xlWb.VBProject.VBComponents.Import f
+                End If
                 i = i + 1
             End If
         Next f
