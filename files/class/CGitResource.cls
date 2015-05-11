@@ -96,7 +96,7 @@ Public Sub ImportCode()
                 ' Must remove the project's VBComps before importing, which really must be tested before using on SmartApp. Always keep a backup file too.
                 Set VBComp = xlWb.VBProject.VBComponents(RemoveExtension(f.Name))
                 ' Try skipping importing the forms. :(
-                If VBComp.Type <> vbext_ct_MSForm Then
+                If VBComp.Type <> vbext_ct_MSForm And VBComp.Name <> "CWorkbook" Then
                     xlWb.VBProject.VBComponents.Remove VBComp
                     xlWb.VBProject.VBComponents.Import f
                 End If
